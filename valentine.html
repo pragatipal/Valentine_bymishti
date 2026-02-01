@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Be My Valentine</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        overflow-x: hidden;
+    }
+
+    h1 {
+        margin-top: 120px;
+        font-size: 2.5rem;
+        color: #fff;
+    }
+
+    .buttons {
+        margin-top: 40px;
+        position: relative;
+        height: 200px;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        position: absolute;
+        transition: 0.2s;
+    }
+
+    #yesBtn {
+        background: #28a745;
+        color: white;
+        left: 40%;
+    }
+
+    #noBtn {
+        background: #dc3545;
+        color: white;
+        left: 55%;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-size: 20px;
+        color: white;
+        min-height: 40px;
+    }
+
+    #yaySection {
+        margin-top: 600px;
+        padding: 80px 20px;
+        background: white;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+    }
+
+    #yaySection h2 {
+        color: #ff4081;
+        font-size: 2rem;
+    }
+
+    #yaySection img {
+        margin-top: 20px;
+        width: 250px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+</style>
+</head>
+<body>
+
+<h1>Will You Be My Valentine?</h1>
+
+<div class="buttons">
+    <button id="yesBtn">Yes ❤️</button>
+    <button id="noBtn">No 💔</button>
+</div>
+
+<div id="message"></div>
+
+<div id="yaySection">
+    <h2>Yay! I knew you'd say yes 😌❤️</h2>
+    <p>We are legally adorable now.</p>
+    <img src="your-photo.jpg" alt="Us together">
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+const phrases = [
+    "You sure?",
+    "Think again 👀",
+    "Nope, try better",
+    "That button is shy",
+    "Wrong answer detected",
+    "Destiny says yes",
+    "Stop resisting love",
+    "System error: No not allowed",
+    "Nice try human",
+    "No escape 😈"
+];
+
+let phraseIndex = 0;
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+function moveButton() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 100);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+
+    message.textContent = phrases[phraseIndex];
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+}
+
+document.getElementById("yesBtn").addEventListener("click", () => {
+    document.getElementById("yaySection").scrollIntoView({ behavior: "smooth" });
+});
+</script>
+
+</body>
+</html>
